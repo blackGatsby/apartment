@@ -1,0 +1,29 @@
+doctype html 
+html 
+ head 
+  title dashboard 
+  link(rel='stylesheet' href='/dashbod.css')
+  link(rel='stylesheet' href='/alerts.css')
+  script()
+ body.body 
+  div 
+   header
+    h1= `Welcome, ${user.firstName} to your dashboard`
+   nav
+    ul
+     li
+      a(href='/advertise')  Advertise An Apartment
+     li 
+      a(href='/update') Update An Apartment
+     li 
+      a(href='/overview') View All Apartment 
+     li 
+      a(href='/delete') Remove An Apartment
+     li 
+      a(href='/profile') View Profile 
+     li
+      a#out(href='')  Click To Logout
+
+
+  script(src='/js/login-logout.js' type='module')
+ 

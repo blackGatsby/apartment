@@ -1,0 +1,50 @@
+doctype html
+html 
+ head 
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Detail page 
+  link(rel='stylesheet' href='/apartmentdetail.css')
+  script(src="https://js.stripe.com/v3/")
+
+ body
+   include _header
+   div.container 
+   button(id='pic-tour') show all photos
+   div.media 
+    
+    img(src=`/uploads/${info.pic1.filename}` alt='First Image')
+    img(src=`/uploads/${info.pic2.filename}` alt='Second Image')
+    video(controls)
+     source(src=`/uploads/${info.video.filename}` type='video/mp4')
+     Your browser does not support the video tag
+  
+
+   div.details 
+    h1 Details 
+    h3= `Location: ${info.location}`
+    h3= `Price: GH₵${info.price}`
+    h3= `Property tile: ${info.property_title}`
+    h3= `Description: ${info.description}`
+    h3= `Landlord's Number: ${info.telephone}`
+    h3= `Email: ${info.email}`
+    if delta 
+     button(id='delete'  onclick='delets()') DELETE APARTMENT
+    else if user 
+
+    else 
+      button.book(id='booker' data-apartment-id=`${info.id}`) BOOK APARTMENT  
+
+ 
+
+
+   script(src='/js/index.js' type='module') 
+   script(src='/js/stripe.js' type='module')
+  
+    
+    
+    
+
+      
+             
+     
