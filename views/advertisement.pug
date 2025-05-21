@@ -30,7 +30,7 @@ script.
 
      e.preventDefault();
 
-     fetch('http://localhost:3000/dash')
+     fetch('/dash')
       .then((val)=>{
         if(!val.ok){
            val.json()
@@ -51,7 +51,7 @@ script.
      
     let data = new FormData(e.target)
 
-    fetch("http://localhost:3000/addApartmentPortal",{
+    fetch("/addApartmentPortal",{
         method:'Post',
         body : data
     })

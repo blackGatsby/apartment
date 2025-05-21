@@ -17,7 +17,7 @@ del.addEventListener('click',(e)=>{
 
  if(ans){
 
-fetch(`http://localhost:3000/landapartment/${ids}`,{
+fetch(`/landapartment/${ids}`,{
   method:'DELETE'
 })
 .then(value=>{
