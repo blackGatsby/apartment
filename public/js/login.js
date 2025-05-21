@@ -10,7 +10,7 @@ import {showAlert} from './alerts.js'
             user[i] = v;
         })
 
-        fetch('http://localhost:3000/logino',{
+        fetch('/logino',{
             method:'Post',
             headers:{
                 'Content-Type':'application/json'
