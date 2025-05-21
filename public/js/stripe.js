@@ -9,7 +9,7 @@ const stripe = Stripe('pk_test_51RNxbFFlkOafule8XT4DQQBjTbYu6LzXvuCrY08spAhhkAKb
 
 try{
 
-  const result = await fetch(`http://localhost:3000/checkout-session/${tourId}`)
+  const result = await fetch(`/checkout-session/${tourId}`)
 
   if(!result.ok){
   throw new Error(`Failed to fetch checkout session: ${result.status}`)
