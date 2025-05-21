@@ -67,7 +67,7 @@ bookBtn.addEventListener('click',(e)=>{
 
 document.getElementById('board').addEventListener('click',(e)=>{
     e.preventDefault();
-    fetch('http://localhost:3000/dash')
+    fetch('/dash')
      .then(val=>{
       if(!val.ok){
          val.json()
