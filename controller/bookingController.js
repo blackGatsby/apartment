@@ -31,7 +31,8 @@ const session = await stripe.checkout.sessions.create({
     product_data:{
         name: house.property_title,
         description:house.description,
-        images:[`https://bull-661v.onrender.com:/uploads/${house.pic1.filename}`],
+        images:[`http://localhost:3000/uploads/${house.pic1.filename}`],
+      
     },
    },
    quantity:1,

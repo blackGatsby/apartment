@@ -13,14 +13,16 @@ const {app} = tool
 
 let port = process.env.PORT
 
+const DB = process.env.DATABASE.replace('<PASSWORD>',process.env.DATABASE_PASSWORD)
+
 
 mongoose
-.connect(process.env.DATABASE_LOCAL,{
+.connect(DB,{
     useCreateIndex:true,
     useNewUrlParser:true,
     useFindAndModify:false
 })
-.then(()=>console.log(`database connected successfully`))
+.then((con)=>{console.log('connected successfully')})
 
 app.listen(port,()=>console.log(`listening on port ${port}`))
 
