@@ -1,6 +1,6 @@
 
 import {booked} from './stripe.js';
-
+import {showAlert} from './alerts.js'
 
 const del = document.getElementById('delete')
 
@@ -72,7 +72,7 @@ document.getElementById('board').addEventListener('click',(e)=>{
       if(!val.ok){
          val.json()
          .then(ans=>{
-          if(ans.status==='unauthorize'){alert(ans.message); location.reload(true);}
+          if(ans.status==='unauthorize'){showAlert('error',ans.message); location.reload(true);}
           else{
             alert(ans.message); location.reload(true)
           }
@@ -88,10 +88,10 @@ document.getElementById('board').addEventListener('click',(e)=>{
 
       document.getElementById('out').addEventListener('click',(e)=>{
        e.preventDefault();
-       fetch(`http://localhost:3000/logout`)
+       fetch(`/logout`)
        .then(val=>{
         if(val.ok){
-            alert(`Logged out successfully`);
+            showAlert('success','logged out successfully');
             window.setTimeout(()=>location.assign('/'),1000)
         }
          })

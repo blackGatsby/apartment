@@ -15,7 +15,7 @@ try{
 
 const house = await model.apartment.findById(req.params.tourID);
 
-//console.log(house)
+console.log(house)
 
 const session = await stripe.checkout.sessions.create({
     payment_method_types:['card'],

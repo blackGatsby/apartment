@@ -92,7 +92,10 @@ if(req.url==='/delete'){check=true;}
 next();
 }catch(err){
 
-next();
+res.status(401).json({
+  status:"tempered token",
+  message:"token has been tempered with"
+})
   
   
 }
@@ -118,7 +121,10 @@ req.info = decoded;
 next();
     }
     else{
-      next();
+      res.status(400).json({
+      status:"error",
+      message:"no token found"  
+      })
     }
 
   }catch(err){

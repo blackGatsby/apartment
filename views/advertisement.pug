@@ -24,45 +24,5 @@ html
       input(type='submit' value='click to submit' id='btn')
 
 
-script. 
+script(src='/js/login-logout.js' type='module') 
   
-  document.getElementById('board').addEventListener('click',(e)=>{
-
-     e.preventDefault();
-
-     fetch('/dash')
-      .then((val)=>{
-        if(!val.ok){
-           val.json()
-           .then((ans)=>{
-            if(ans.status==='unauthorize') { alert(ans.message)}
-            else{alert(ans.message); location.assign('/')}
-           })
-        }else{
-         window.setTimeout(()=>location.assign('/dash'),1000)
-        }
-        
-      })
-
-  })
- 
- document.getElementById('frms').addEventListener('submit',(e)=>{
-    e.preventDefault();
-     
-    let data = new FormData(e.target)
-
-    fetch("/addApartmentPortal",{
-        method:'Post',
-        body : data
-    })
-    .then((val)=>{
-        if(val.ok){
-            alert(`uploaded apartment successfully`)
-            window.setTimeout(()=>{location.assign('/overview')},2000)
-        }
-        else{
-            val.json()
-            .then(err=>alert(err.message))
-        }
-    })
- })
