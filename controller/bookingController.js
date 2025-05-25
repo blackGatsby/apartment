@@ -8,7 +8,7 @@ export async function getCheckOutSession(req,res,next){
 
 const host = req.headers.host;
 const fullUrl = `https://${host}${req.url}`;
-alert(fullUrl)
+
 try{
 
     const stripe  = new Stripe(process.env.STRIPE_SECRET_KEY)
