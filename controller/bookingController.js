@@ -6,8 +6,6 @@ import Stripe from 'stripe';
 
 export async function getCheckOutSession(req,res,next){
 
-    
-
 try{
 
     const stripe  = new Stripe(process.env.STRIPE_SECRET_KEY)
