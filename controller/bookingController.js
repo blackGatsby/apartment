@@ -6,10 +6,7 @@ import Stripe from 'stripe';
 
 export async function getCheckOutSession(req,res,next){
 
-const host = req.headers.host;
-const fullUrl = `https://${host}${req.url}`;
-
-let ans = fullUrl.split("/")[0]
+const baseUrl = `${req.protocol}://${req.get('host')}`;
 
 try{
 
@@ -34,7 +31,7 @@ const session = await stripe.checkout.sessions.create({
     product_data:{
         name: house.property_title,
         description:house.description,
-        images:[`${ans}/uploads/${house.pic1.filename}`],
+        images:[`${baseUrl}/uploads/${house.pic1.filename}`],
        // https://apartment-09ae.onrender.com/uploads/682e03f5f94bbc0100de0a91-curren.png
     },
    },
