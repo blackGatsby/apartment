@@ -15,7 +15,7 @@ try{
 
 const house = await model.apartment.findById(req.params.tourID);
 
-console.log(house)
+//console.log(house.pic1.filename)
 
 const session = await stripe.checkout.sessions.create({
     payment_method_types:['card'],
@@ -32,7 +32,7 @@ const session = await stripe.checkout.sessions.create({
         name: house.property_title,
         description:house.description,
         images:[`/uploads/${house.pic1.filename}`],
-      
+     // http://localhost:3000/uploads/682e03f5f94bbc0100de0a91-Screenshot (344).png
     },
    },
    quantity:1,
