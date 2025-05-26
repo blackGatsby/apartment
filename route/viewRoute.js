@@ -21,7 +21,7 @@ viewrouter.get("/update/:id",isLoggedIn,viewController.updateAdvert)
 
 viewrouter.get('/overview',isLoggedIn,viewController.overview)
 
-viewrouter.get('/apartmentdetail/:id',viewController.detailapartment)
+viewrouter.get('/apartmentdetail/:id',both,viewController.detailapartment)
 
 viewrouter.get("/dash",isLoggedIn,viewController.dashbod)
 

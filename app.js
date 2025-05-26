@@ -15,7 +15,7 @@ import cookieParser from 'cookie-parser'
  app.use(express.static('public'))
 
  // At the top of your app setup (not in the function)
-app.set('trust proxy', true);
+//app.set('trust proxy', true);
 
 
 app.set('view engine','pug')

@@ -121,10 +121,16 @@ req.info = decoded;
 next();
     }
     else{
+
+        /** 
       res.status(400).json({
       status:"error",
       message:"no token found"  
       })
+**/
+
+next();
+
     }
 
   }catch(err){
