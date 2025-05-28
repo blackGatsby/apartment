@@ -20,20 +20,46 @@ html
      Your browser does not support the video tag
   
 
-   div.details 
-    h1 Details 
-    h3= `Location: ${info.location}`
-    h3= `Price: GH₵${info.price}`
-    h3= `Property tile: ${info.property_title}`
-    h3= `Description: ${info.description}`
-    h3= `Landlord's Number: ${info.telephone}`
-    h3= `Email: ${info.email}`
-    if delta 
-     button(id='delete'  onclick='delets()') DELETE APARTMENT
-    else if user 
+   div.details
+    table 
+     tr 
+      th Details 
+     tr
+      th Location 
+      td= info.location 
+     tr 
+      th Price 
+      td GH#{info.price} 
+     tr 
+      th Property Category  
+      td= info.property_title 
+     tr 
+      th Description 
+      td= info.description 
+     tr 
+      th Landlords's Contact 
+      td= info.telephone 
+     tr 
+      th Email 
+      td= info.email 
 
-    else 
-      button.book(id='booker' data-apartment-id=`${info.id}`) BOOK APARTMENT  
+     tr 
+      th 
+       if delta 
+        button(id='delete' onclick='delets()') DELETE APARTMENT
+       else if user
+       else 
+        button.book(id='booker' data-apartment-id=`${info.id}`) BOOK APARTMENT
+
+    
+
+    
+
+
+
+
+
+
 
  
 
