@@ -31,7 +31,8 @@ const session = await stripe.checkout.sessions.create({
     product_data:{
         name: house.property_title,
         description:house.description,
-        images:[`${baseUrl}/uploads/${house.pic1.filename}`],
+        images:[`${req.protocol}://${req.get('host')}/uploads/${house.pic1.filename}`]
+        // images:[`${baseUrl}/uploads/${house.pic1.filename}`],
        // https://apartment-09ae.onrender.com/uploads/682e03f5f94bbc0100de0a91-curren.png
     },
    },

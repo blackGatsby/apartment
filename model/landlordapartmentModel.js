@@ -86,6 +86,15 @@ required:[true,'please specify the path of video']
 
 },{timestamps:true})
 
+
+const bookingSchema = new mongoose.Schema({
+apartment:{
+  type:mongoose.Schema.ObjectId,
+  ref:"Apartment",
+  required:true
+}
+},{timestamps:true})
+
 const landlord = mongoose.model("Landlord",landlordSchema);
 const apartment = mongoose.model("Apartment",apartmentSchema);
 
