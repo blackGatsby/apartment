@@ -71,9 +71,13 @@ required:[true,'please specify the path of video']
       type:String,
       required:[true,'please add the email']
     },
-    property_title:{
+    category:{
          type:String,
          required:[true,'please add property title']
+    },
+    duration:{
+          type:String,
+          required:[true, 'please provide the duration you will be renting out the apartment']
     },
     description:{
       type:String,

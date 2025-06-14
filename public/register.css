@@ -163,6 +163,10 @@
                
             }
 
+            .forms select{
+              display:block;
+            }
+
 
             .forms input:focus{
               outline:none;

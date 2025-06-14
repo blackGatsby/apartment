@@ -16,8 +16,16 @@ html
      input(type='text' name='location' value=info.location)
      label Price of the apartment (GHC)
      input(type='text' name='price' value=info.price)
-     label Provide title for the appartment 
-     input(type='text' name='property_title' value=info.property_title)
+     label Select the apartment type (category) 
+     select(name='category')
+      option(value='2 bedroom apartment' selected=info.category == '2 bedroom apartment') 2 bedroom apartment 
+      option(value='3 bedroom apartment' selected=info.category == '3 bedroom apartment') 3 bedroom apartment
+      option(value='single bedroom apartment' selected=info.category == 'single bedroom apartment') single bedroom apartment 
+     label Select the duration you are renting the apartment output 
+     select(name='duration')
+      option(value='6 months' selected=info.duration == '6 months') 6 months 
+      option(value='1 year' selected=info.duration == '1 year') 1 year 
+      option(value='2 years' selected=info.duration == '2 years') 2 years
      label Provide descripton for the apartment 
      textarea(cols='30' rows='5' name='description')=info.description
      input(type='submit' value='click to submit' id='btn')

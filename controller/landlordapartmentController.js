@@ -12,7 +12,7 @@ const owner = await model.landlord.findById(req.info._id)
 
 
 try{
-const {location,price,description,property_title} = req.body
+const {location,price,description,category,duration} = req.body
     const {file,vid} = req.files;
 const [a,b] = file
 const [c] = vid;
@@ -22,7 +22,8 @@ let video = c
 
 let data = await model.apartment.create({
     description,
-    property_title,
+    category,
+    duration,
     location,
     price,
     pic1,
@@ -110,7 +111,7 @@ res.status(400).json({
 
 export async function updateApartment(req,res){
 
-    const {location,price,description,property_title} = req.body;
+    const {location,price,description,category,duration} = req.body;
 
     
 
@@ -138,7 +139,8 @@ if(video) updatedApartment.video = video;
 if(location) updatedApartment.location = location;
 if(price) updatedApartment.price = price;
 if(description) updatedApartment.description = description;
-if(property_title) updatedApartment.property_title = property_title;
+if(category) updatedApartment.category = category;
+if(duration) updatedApartment.duration = duration;
 
 const check = await model.apartment.findOne({_id:req.params.id,landlord:req.info._id});
 

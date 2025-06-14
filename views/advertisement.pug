@@ -17,8 +17,17 @@ html
       input(type='text' name='location' placeholder='apartment location')
       label Price of the apartment (GH₵)
       input(type='text' name='price' placeholder='apartment price')
-      label Provide title for the appartment 
-      input(type='text' name='property_title' placeholder='type of apartment')
+      label Select the apartment type (category) 
+      select(name='category')
+       option(value='2 bedroom apartment') 2 bedroom 
+       option(value='3 bedroom apartment') 3 bedroom
+       option(value='single bedroom apartment') single bedroom apartment
+      label Select duration you are renting it out 
+      select(name='duration') 
+       option(value='6 months') 6 months
+       option(value='1 year') 1 year 
+       opton(value='2 years') 2 years 
+       option(value='3 years') 3 years
       label Provide descripton for the apartment 
       textarea(cols='30' rows='3' name='description' placeholder='apartment description')
       input(type='submit' value='click to submit' id='btn')
