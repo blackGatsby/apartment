@@ -41,9 +41,9 @@ import {showAlert} from './alerts.js'
       if(!val.ok){
          val.json()
          .then(ans=>{
-          if(ans.status==='unauthorize'){alert(ans.message); location.reload(true);}
+          if(ans.status==='unauthorize'){showAlert('error',`${ans.message}`)}
           else{
-            alert(ans.message); location.reload(true)
+            showAlert('error',ans.message); location.reload(true)
           }
          })
       }else{

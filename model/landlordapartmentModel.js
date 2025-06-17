@@ -83,9 +83,9 @@ required:[true,'please specify the path of video']
       type:String,
       required:[true,'please provide a description']
     },
-    available:{
-      type:Boolean,
-      default:true
+    availability:{
+      type:String,
+      required:[true,'please specify if apartment is available']
     }
 
 },{timestamps:true})

@@ -29,7 +29,7 @@ const session = await stripe.checkout.sessions.create({
     currency:'usd',
     unit_amount: house.price,
     product_data:{
-        name: house.property_title,
+        name: house.category,
         description:house.description,
         images:[`${req.protocol}://${req.get('host')}/uploads/${house.pic1.filename}`]
         // images:[`${baseUrl}/uploads/${house.pic1.filename}`],

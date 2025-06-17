@@ -15,7 +15,8 @@ let port = process.env.PORT
 
 const DB = process.env.DATABASE.replace('<PASSWORD>',process.env.DATABASE_PASSWORD)
 
-
+/*
+this connects you to the hosted database
 mongoose
 .connect(DB,{
     useCreateIndex:true,
@@ -23,6 +24,16 @@ mongoose
     useFindAndModify:false
 })
 .then((con)=>{console.log('connected successfully')})
+*/
+
+mongoose
+.connect(process.env.DATABASE_LOCAL,{
+    useCreateIndex:true,
+    useNewUrlParser:true,
+    useFindAndModify:false
+})
+.then((con)=>console.log('database connected successfully'))
+
 
 app.listen(port,()=>console.log(`listening on port ${port}`))
 

@@ -37,6 +37,9 @@ html
       th Duration 
       td= info.duration 
      tr 
+      th Availability 
+      td= info.availability 
+     tr 
       th Description 
       td= info.description 
      tr 
@@ -52,7 +55,7 @@ html
         button(id='delete' onclick='delets()') DELETE APARTMENT
        else if user
        else 
-        button.book(id='booker' data-apartment-id=`${info.id}`) BOOK APARTMENT
+        button.book(id='booker' data-apartment-availability=`${info.availability}` data-apartment-id=`${info.id}`) BOOK APARTMENT
 
     
 

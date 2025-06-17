@@ -3,11 +3,12 @@ html
  head 
   title updateApartment
   link(rel='stylesheet' href='/register.css')
+  
  body 
    include _header
    .div.forms  
     h1 Please make the necessary changes to the apartment 
-    form#frms(enctype='multipart/form-data')    
+    form#frms(enctype='multipart/form-data'  data-inform=`${info._id}`)    
      label choose two apartment pictures
      input(type='file' name='file' multiple)
      label choose one apartment video 
@@ -26,65 +27,14 @@ html
       option(value='6 months' selected=info.duration == '6 months') 6 months 
       option(value='1 year' selected=info.duration == '1 year') 1 year 
       option(value='2 years' selected=info.duration == '2 years') 2 years
+      option(value='3 years' selected=info.duration == '3 years') 3 years
+     label Select apartment availability 
+     select(name='availability')
+      option(value='available' selected=info.availability == 'available') available 
+      option(value='not available' selected=info.availability == 'not available') not available 
      label Provide descripton for the apartment 
      textarea(cols='30' rows='5' name='description')=info.description
-     input(type='submit' value='click to submit' id='btn')
+     input(type='submit' value='click to submit' id='btn' )
 
-
-   script.  
-    document.getElementById('frms').addEventListener('submit',(e)=>{
-
-       e.preventDefault();
-
-    let info = !{JSON.stringify(info)} 
-          
-       
-        /*
-                  to have access to the local variables in pug, the local variable
-     which is 'info' and is an object needs to be converted into a string and assigned into a variable so that
-      the client side object can then use it for any task like a fetch request. This is to say the local variables
-       in pug are only available when they are been rendered. They are only in the server side not in the client side which
-       is the browser so in order to have them in the client side we embed them into the html.
-             
-          */
-
+   script(src='/js/updateAdvertise.js' type='module')
    
-
-    const a = info._id;
-  
-
-       let data = new FormData(e.target)
-        
-        fetch(`/landapartment/${a}`,{
-            method:'PATCH',
-            body: data
-        })
-        .then((val)=>{
-            if(val.ok){
-                alert(`changes implemented successfully`)
-                window.setTimeout(()=>location.assign('/update'),2000)
-            }
-            else{
-                val.json()
-                .then((ans)=>alert(ans.message))
-            }
-        })
-        .catch((err)=>{
-           alert('could not make the post fetch request')
-        })
-
-
-        })
-
-
-
-        document.getElementById('out').addEventListener('click',(e)=>{
-                e.preventDefault();
-          fetch('http://localhost:3000/logout')
-          .then(val=>{
-            if(val.ok){
-                 alert(`logged out successfully`);
-                 location.assign('/')
-            }
-          })
-      })

@@ -44,18 +44,29 @@ location.assign('/delete')
 }
 
 
+
+
+
 const bookBtn = document.getElementById('booker');
 
 
 if(bookBtn){
 
-bookBtn.addEventListener('click',(e)=>{
+  
+ 
 
-    e.target.textContent = 'Processing.....';
+bookBtn.addEventListener('click',(e)=>{
 
     const {apartmentId} = e.target.dataset;
 
-  
+    const {apartmentAvailability} = e.target.dataset;
+console.log(`oops apartment is ${apartmentAvailability}`);
+
+if(apartmentAvailability === 'not available'){
+ return  showAlert("error",`sorry, apartment is ${apartmentAvailability}`);
+}
+
+e.target.textContent = 'Processing.....';
 
     booked(apartmentId)
 })
