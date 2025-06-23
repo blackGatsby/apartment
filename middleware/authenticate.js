@@ -16,7 +16,7 @@ export function createToken(user,res) {
   res.cookie('authToken', token, {
     httpOnly: true,
     sameSite: 'Strict',
-    maxAge: 30 * 60 * 1000, // 30 minutes
+    maxAge: 60 * 60 * 1000, // cookie expires in 1hr.
   });
 
 
