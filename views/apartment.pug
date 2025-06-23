@@ -52,7 +52,7 @@ html
      tr 
       th 
        if delta 
-        button(id='delete' onclick='delets()') DELETE APARTMENT
+        button(id='delete' data-apartment-Delete=`${info._id}`) DELETE APARTMENT
        else if user
        else 
         button.book(id='booker' data-apartment-availability=`${info.availability}` data-apartment-id=`${info.id}`) BOOK APARTMENT
@@ -62,16 +62,8 @@ html
     
 
 
-
-
-
-
-
- 
-
-
-   script(src='/js/index.js' type='module') 
-   script(src='/js/stripe.js' type='module')
+    script(src='/js/index.js' type='module') 
+    script(src='/js/stripe.js' type='module')
   
     
     

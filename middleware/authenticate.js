@@ -8,7 +8,7 @@ let check = false;
 
 export function createToken(user,res) {
   const token = jwt.sign(user, process.env.ACCESS_TOKEN, {
-    expiresIn: '1800s'
+    expiresIn: '1h'
   });
 
   
@@ -42,7 +42,7 @@ export async function verifyToken(req,res,next){
     jwt.verify(token,process.env.ACCESS_TOKEN,(err,decoded)=>{
 if(err) return res.status(400).json({
     status:'authorize',
-    message:'please your token expired login again'
+    message:'please  token has been tempered with login again'
 });
 
 req.info = decoded.data
@@ -134,6 +134,9 @@ next();
     }
 
   }catch(err){
-
+   res.status(400).json({
+      status:"error",
+      message:"oops, token has been tempered with!!!"  
+      })
   }
 }

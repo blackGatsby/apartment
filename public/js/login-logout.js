@@ -15,7 +15,7 @@ if(adv){
             val.json()
             .then(ans=>{
                 if(ans==='unauthorize')showAlert('error',ans.message)
-                else showAlert('error',ans.message)
+                else {showAlert('error',ans.message); }
             })
         }else{
            const {url} = val
@@ -156,35 +156,56 @@ if(outt){
   
 
 
+
  let brd =  document.getElementById('board');
 
- if(brd){
-
-    brd.addEventListener('click',(e)=>{
-  
-        e.preventDefault();
-
-        fetch('/dash')
-        .then(val=>{
-            if(!val.ok){
-                val.json()
-                .then(ans=>{
-                    if(ans.status==='unauthorize'){showAlert('error',ans.message); }
-                    else{
-                        alert(ans.message); location.reload(true)
-                    }
-                })
-            }
-            else{
-              window.setTimeout(()=>{location.assign('/dash'),1000})  
-            }
-        })
-
-
-    })
-
- }
  
+if(brd){
+  brd.addEventListener('click',(e)=>{
+    e.preventDefault();
+
+fetch('/dash')
+.then(val=>{
+  if(!val.ok){
+
+    /** 
+val.json()
+.then(ans=>{
+  if(ans.status==='unauthorize')showAlert('error',`${ans.message}`)
+    else showAlert('error', `${ans.message}`)
+})
+*/
+
+// log out the user from the system by calling the log out api
+
+fetch('/logout')
+.then(val=>{
+  if(val.ok){
+    val.json()
+    .then(ans=>{
+      showAlert('success',`ooops token has been tempered with, so you are ${ans.status}`);
+      window.setTimeout(()=>location.assign('/login'),3000)
+    })
+  }
+})
+
+  }else{
+ window.setTimeout(()=>location.assign('/dash'),1000)   
+  }
+})
+
+
+
+
+
+
+  })
+}
+
+
+
+
+
 
 
 
@@ -208,15 +229,54 @@ fm.addEventListener('submit',(e)=>{
      val.json()
      .then(ans=>{
         if(ans==='unauthorize') showAlert('error',ans.message)
-            else{showAlert('error',ans.message)}
+            else{
+          showAlert('error',ans.message);
+  window.setTimeout(()=>{ location.assign(`/login`)},2000)            
+            
+            }
      })
 
 
     }else{
-        location.assign('/overview')
+        val.json()
+        .then(ans=>{
+            showAlert('success',`${ans.status}`);
+           window.setTimeout(()=>location.assign('/overview'),2000) ;
+        })
+       
     }
   })
 
+
+})
+
+
+}
+
+
+let detail = document.getElementById("detail");
+
+if(detail){
+
+detail.addEventListener('click',e=>{
+
+    e.preventDefault();
+
+    const {apartmentId} = e.target.dataset;
+
+    fetch(`/apartmentdetail/${apartmentId}`)
+    .then(val=>{
+        if(!val.ok){
+          val.json()
+          .then(ans=>{
+            if(ans==='unauthorize') showAlert('error',`${ans.message}`)
+                else showAlert('error',`${ans.message}`)
+          })
+        }
+        else{
+             location.assign(val.url)
+        }
+    })
 
 })
 

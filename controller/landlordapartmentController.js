@@ -37,7 +37,7 @@ let data = await model.apartment.create({
 
 
 res.status(200).json({
-    status:"success",
+    status:"uploaded apartment successfully",
     media:{
        data
     }

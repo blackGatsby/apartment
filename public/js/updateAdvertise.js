@@ -22,7 +22,7 @@ if(night){
         }else{
            val.json()
            .then((ans)=>{showAlert('error',`${ans.message}`)
-          window.setTimeout(()=>location.assign('/'),2000)
+          window.setTimeout(()=>location.assign('/login'),2000)
           })
 
         }
@@ -59,4 +59,34 @@ if(logout){
 
   })
 
+}
+
+
+let board = document.getElementById('board');
+
+if(board){
+  board.addEventListener('click',(e)=>{
+    e.preventDefault();
+    fetch('/dash')
+    .then(val=>{
+      if(val.ok){
+      window.setTimeout(()=>location.assign('/dash'),2000)
+      }else{
+       // if token has been tempered with or expired logout, by calling the logout api
+       
+       fetch('/logout')
+       .then(val=>{
+        if(val.ok){
+          val.json()
+          .then(ans=>{
+            showAlert('success',`oops token has been tempered with so you are ${ans.status}`);
+            window.setTimeout(()=>location.assign('/login'),3000)
+          })
+        }
+       })
+       
+       
+      }
+    })
+  })
 }

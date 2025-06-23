@@ -21,7 +21,7 @@ block content
          p 
           span.card__footer-value= `GH₵${apartment.price}`
           span.card__footer-text  
-          a.btn.btn--green.btn--small(href=`/apartmentdetail/${apartment._id}`) Details  
+          a.btn.btn--green.btn--small#detail(  data-apartment-Id=`${apartment._id}`) Details  
           
      
      

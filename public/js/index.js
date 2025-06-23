@@ -1,131 +1,130 @@
-
-import {booked} from './stripe.js';
 import {showAlert} from './alerts.js'
-
-const del = document.getElementById('delete')
-
-if(del){
-  
-del.addEventListener('click',(e)=>{
-
-  e.preventDefault();
-
- let ans = window.confirm('are you sure you wish to delete this apartment');
- let url = document.URL;
- let id = url.split("/");
- let ids = id[id.length-1];
-
- if(ans){
-
-fetch(`/landapartment/${ids}`,{
-  method:'DELETE'
-})
-.then(value=>{
-
-if(value.ok){
-alert(`apartment deleted successfully`);
-window.setTimeout(()=>location.assign(`/delete`),1000)
-}
-else{
-  value.json()
-  .then(ans=>alert(ans.message))
-}
-
-})
-
- }else{
-
-location.assign('/delete')
-
- }
-
-})
-
-}
+import {booked} from './stripe.js' // when you are not connected to the internet some of the buttons will malfunction so you have to be connected to the internet
 
 
 
 
 
-const bookBtn = document.getElementById('booker');
+ let brd =  document.getElementById('board');
 
-
-if(bookBtn){
-
-  
  
+if(brd){
+  brd.addEventListener('click',(e)=>{
+    e.preventDefault();
 
-bookBtn.addEventListener('click',(e)=>{
-
-    const {apartmentId} = e.target.dataset;
-
-    const {apartmentAvailability} = e.target.dataset;
-console.log(`oops apartment is ${apartmentAvailability}`);
-
-if(apartmentAvailability === 'not available'){
- return  showAlert("error",`sorry, apartment is ${apartmentAvailability}`);
-}
-
-e.target.textContent = 'Processing.....';
-
-    booked(apartmentId)
+fetch('/dash')
+.then(val=>{
+  if(!val.ok){
+val.json()
+.then(ans=>{
+  if(ans.status==='unauthorize')showAlert('error',`${ans.message}`)
+    else showAlert('error', `${ans.message}`)
+})
+  }else{
+ window.setTimeout(()=>location.assign('/dash'),1000)   
+  }
 })
 
 
 
+
+
+
+  })
 }
 
 
-document.getElementById('board').addEventListener('click',(e)=>{
-    e.preventDefault();
-    fetch('/dash')
-     .then(val=>{
-      if(!val.ok){
-         val.json()
-         .then(ans=>{
-          if(ans.status==='unauthorize'){showAlert('error',ans.message); location.reload(true);}
-          else{
-            alert(ans.message); location.reload(true)
-          }
-         })
-         }else{
-        window.setTimeout(()=>location.assign('/dash'),1000)
-        }
-       })
-
-      })
 
 
+let outt = document.getElementById("out")
 
-      document.getElementById('out').addEventListener('click',(e)=>{
+if(outt){
+
+  outt.addEventListener('click',(e)=>{
        e.preventDefault();
        fetch(`/logout`)
        .then(val=>{
         if(val.ok){
-            showAlert('success','logged out successfully');
+            showAlert('success',`Logged out successfully`);
             window.setTimeout(()=>location.assign('/'),1000)
         }
-         })
+       })
 
     
-      })
+  })  
+
+}
 
 
 
-            
+
+
+
+
+ 
+
+
+let del = document.getElementById('delete')
+
+if(del){
+  del.addEventListener('click',(e)=>{
+
+     e.preventDefault();
+
+     let ans = window.confirm('are you sure you wish to delete this apartment');
+
+const {apartmentDelete} = e.target.dataset;
+
+     if(ans){
+
+fetch(`/landapartment/${apartmentDelete}`,{
+method:'DELETE'
+})
+.then(value=>{
+  if(value.ok){
+    showAlert('success','apartment deleted successfully');
+    window.setTimeout(()=>location.assign('/delete'),2000)
+  }else{
+value.json()
+.then((ans)=>showAlert('error',`${ans}`))
+  }
+
+})
 
 
 
 
 
-            
 
-          
-
-            
-            
-                         
-          
+     }
 
 
-           
+
+  })
+}
+
+
+let book = document.getElementById('booker');
+
+if(book){
+  
+book.addEventListener('click',(e)=>{
+  e.preventDefault();
+
+  const {apartmentId} = e.target.dataset;
+
+  const {apartmentAvailability} = e.target.dataset;
+
+  if(apartmentAvailability === 'not available'){
+    return showAlert('error', 'sorry, apartment is not available');
+  }
+
+  e.target.textContent = 'Processing.....';
+
+  booked(apartmentId);
+
+})
+
+}
+
+

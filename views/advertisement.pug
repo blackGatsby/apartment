@@ -10,13 +10,13 @@ html
      h1 Please upload the neccessary files
      form#frms(enctype='multipart/form-data')    
       label choose two apartment pictures
-      input(type='file' name='file' multiple)
+      input(type='file' name='file' multiple required)
       label choose one apartment video 
-      input(type='file' name='vid')
+      input(type='file' name='vid' required)
       label Enter apartment location 
-      input(type='text' name='location' placeholder='apartment location')
+      input(type='text' name='location' placeholder='apartment location' required)
       label Price of the apartment (GH₵)
-      input(type='text' name='price' placeholder='apartment price')
+      input(type='text' name='price' placeholder='apartment price' required)
       label Select the apartment type (category) 
       select(name='category')
        option(value='2 bedroom apartment') 2 bedroom 
@@ -32,8 +32,8 @@ html
       select(name='availability') 
        option(value='available') available 
        option(value='not available') not available
-      label Provide descripton for the apartment 
-      textarea(cols='30' rows='3' name='description' placeholder='apartment description')
+      label Provide description for the apartment 
+      textarea(cols='30' rows='3' name='description' placeholder='apartment description' required)
       input(type='submit' value='click to submit' id='btn')
 
 

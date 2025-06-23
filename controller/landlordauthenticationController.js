@@ -84,7 +84,7 @@ export async function logOut(req,res){
 res.cookie('authToken','loggedout',{
   httpOnly:true,
   secure: 'strict',
-  maxAge: 2 * 1000
+  maxAge: 9 * 1000
 })
 
 res.status(200).json({status:'logged out'})
