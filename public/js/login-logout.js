@@ -85,6 +85,7 @@ let del = document.getElementById('delete')
 if(del){
 
 del.addEventListener('click',(e)=>{
+  alert('hi')
      e.preventDefault();
      fetch("/delete")
      .then(val=>{
@@ -254,34 +255,38 @@ fm.addEventListener('submit',(e)=>{
 }
 
 
-let detail = document.getElementById("detail");
 
-if(detail){
 
-detail.addEventListener('click',e=>{
 
+let srchFrm = document.getElementById('nav__search')
+
+
+
+if(srchFrm){
+
+  srchFrm.addEventListener('submit',(e)=>{
     e.preventDefault();
-
-    const {apartmentId} = e.target.dataset;
-
-    fetch(`/apartmentdetail/${apartmentId}`)
-    .then(val=>{
-        if(!val.ok){
-          val.json()
-          .then(ans=>{
-            if(ans==='unauthorize') showAlert('error',`${ans.message}`)
-                else showAlert('error',`${ans.message}`)
-          })
-        }
-        else{
-             location.assign(val.url)
-        }
-    })
-
+    let data = new FormData(e.target);
+    data.forEach((v,i)=>{
+      
+fetch(`/search/${v}`)
+.then(val=>{
+  if(val.ok){
+    location.assign(val.url)
+  }else{
+    showAlert('error','sorry, no such apartment available');
+   window.setTimeout(()=>location.reload(true),3000) 
+  }
 })
 
 
+    })
+  })
 }
+
+  
+
+
 
 
 

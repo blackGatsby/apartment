@@ -1,8 +1,8 @@
 header.header 
- form.nav__search
-  input(type='search' placeholder='search an apartment' id='srch')
-   
-  button#btn Click
+ form#nav__search(name='search')
+  input(type='search' placeholder='search an apartment' id='srch' name='find' required)
+  input(type='submit' value='click to submit' id='btn') 
+
  .header__logo
   img(src='' alt='apartment logo') 
  nav.user

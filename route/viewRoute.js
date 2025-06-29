@@ -31,4 +31,5 @@ viewrouter.get("/delete",isLoggedIn,viewController.deleteApartment)
 
 viewrouter.get("/deleteDetail/:id",both,viewController.detailapartment)
 
+viewrouter.get(`/search/:ans`,both,viewController.findApartment)
 

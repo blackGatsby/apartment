@@ -26,6 +26,39 @@ async function overview(req, res) {
     }catch(err){console.log(`oops, there is some error  ${err.message}`)}
     
   }
+
+
+  async function findApartment(req,res){
+    try{
+    const {ans} = req.params;
+
+   
+    
+const homes = await rent.apartment.find({$or:[{location:ans},{category:ans}]})
+
+
+if(homes.length === 0){
+ res.status(400).json({
+   message:'not found' 
+ })
+}else if(req.info){
+res.status(200).render('updateapartment',{
+    title:'all apartment',
+    homes
+})
+}else
+{
+
+res.status(200).render('overview',{
+    title:'all apartment',
+    homes
+})
+}
+
+    }catch(err){
+        console.log(err.message)
+    }
+  }
   
   
   
@@ -65,8 +98,6 @@ async function detailapartment(req,res){
 
     let info = await rent.apartment.findById(index);
 
-  
-
     res.status(200).render('apartment',{
         title:'apartment',
         info,
@@ -99,7 +130,7 @@ res.status(200).render('deleteApartment',{
 
 async function tenantOverview(req,res){
     const homes = await rent.apartment.find()
-
+//console.log(homes.length)
     res.status(200).render('overview',{
         title:'all apartment',
           homes
@@ -146,5 +177,6 @@ createAccount,
 dashbod,
 advert,
 bases,
-deleteApartment
+deleteApartment,
+findApartment
 }

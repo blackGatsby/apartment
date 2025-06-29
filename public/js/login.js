@@ -54,4 +54,10 @@ import {showAlert} from './alerts.js'
    })
 
 
+let srchFrm = document.getElementById('nav__search');
 
+
+if(srchFrm){
+  srchFrm.hidden = true;
+
+}

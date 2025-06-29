@@ -16,7 +16,8 @@ export function createToken(user,res) {
   res.cookie('authToken', token, {
     httpOnly: true,
     sameSite: 'Strict',
-    maxAge: 60 * 60 * 1000, // cookie expires in 1hr.
+   maxAge: 60 * 60 * 1000 // cookie expires in 1hr.
+  
   });
 
 
@@ -105,6 +106,7 @@ res.status(401).json({
 
 export async function both(req,res,next){
 
+  console.log(req.url)
 
   try{
 

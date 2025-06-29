@@ -65,7 +65,11 @@ board.addEventListener('click',(e)=>{
 
 
 
+let srchFrm = document.getElementById('nav__search');
 
+if(srchFrm){
+    srchFrm.hidden = true;
+}
 
 
 
