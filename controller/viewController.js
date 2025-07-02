@@ -1,6 +1,6 @@
 import rent from '../model/landlordapartmentModel.js'
 
-
+let urls = [];
 
 function home(req,res){
 res.status(200).render('homeRentals')
@@ -30,30 +30,26 @@ async function overview(req, res) {
 
   async function findApartment(req,res){
     try{
-    const {ans} = req.params;
+    
+
+const {values,url} = req.body
+
 
    
-    
-const homes = await rent.apartment.find({$or:[{location:ans},{category:ans}]})
+let prev = req.get('Referer')  
 
+console.log(prev)
 
-if(homes.length === 0){
- res.status(400).json({
-   message:'not found' 
- })
-}else if(req.info){
-res.status(200).render('updateapartment',{
-    title:'all apartment',
-    homes
-})
-}else
-{
+const homes = await rent.apartment.find({$or:[{location:values},{category:values}]})
 
 res.status(200).render('overview',{
-    title:'all apartment',
+    title:'homepage',
     homes
 })
-}
+
+
+
+
 
     }catch(err){
         console.log(err.message)

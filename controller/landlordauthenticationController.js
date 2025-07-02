@@ -5,9 +5,6 @@ import model from '../model/landlordapartmentModel.js'
 import bcrypt from 'bcrypt';
 
 
-
-
-
 export async function signUp(req,res){
 
 try{
@@ -46,13 +43,16 @@ res.status(400).json({
 
 
 export async function logIn(req, res) {
+
+
   const { email, paswd } = req.body;
+
+ 
 
   try {
     //const info = await model.landlord.findOne({ email, password: paswd });
 
  const info = await model.landlord.findOne({email});
-
 
     if (!info) {
 
@@ -76,6 +76,10 @@ res.status(200).json({
   } catch (err) {
     console.error("Login error:", err);
   }
+
+
+
+
 }
 
 

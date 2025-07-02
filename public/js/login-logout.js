@@ -85,7 +85,7 @@ let del = document.getElementById('delete')
 if(del){
 
 del.addEventListener('click',(e)=>{
-  alert('hi')
+  
      e.preventDefault();
      fetch("/delete")
      .then(val=>{
@@ -256,42 +256,15 @@ fm.addEventListener('submit',(e)=>{
 
 
 
+ let url = document.URL;
 
-
-let srchFrm = document.getElementById('nav__search')
-
-
-
-if(srchFrm){
-
-  srchFrm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    let data = new FormData(e.target);
-    data.forEach((v,i)=>{
-      
-fetch(`/search/${v}`)
-.then(val=>{
-  if(val.ok){
-    location.assign(val.url)
-  }else{
-    showAlert('error','sorry, no such apartment available');
-   window.setTimeout(()=>location.reload(true),3000) 
+ if(url){
+  if(url === 'http://localhost:3000/advertise'  || url === 'http://localhost:3000/overview' || url === 'http://localhost:3000/update'){
+let sch = document.getElementById('nav__search');
+sch.hidden = true;
   }
-})
-
-
-    })
-  })
-}
-
-  
+ }
 
 
 
 
-
-
-
-
-
- 

@@ -2,6 +2,7 @@ import {verifyToken,isLoggedIn,both} from '../middleware/authenticate.js'
 import viewController from '../controller/viewController.js'
 import express from 'express';
 
+
  export const viewrouter = express.Router();
 
 
@@ -31,5 +32,5 @@ viewrouter.get("/delete",isLoggedIn,viewController.deleteApartment)
 
 viewrouter.get("/deleteDetail/:id",both,viewController.detailapartment)
 
-viewrouter.get(`/search/:ans`,both,viewController.findApartment)
+viewrouter.post("/tenantSearch",both,viewController.findApartment)
 

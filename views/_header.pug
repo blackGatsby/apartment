@@ -1,6 +1,7 @@
 header.header 
- form#nav__search(name='search')
-  input(type='search' placeholder='search an apartment' id='srch' name='find' required)
+ form#nav__search(name='search' action=`/tenantSearch` method='POST')
+  input(type='search' name='values' placeholder='search an apartment' id='srch' required)
+  input(type='hidden' name='url' id='currentUrl')
   input(type='submit' value='click to submit' id='btn') 
 
  .header__logo

@@ -106,7 +106,7 @@ res.status(401).json({
 
 export async function both(req,res,next){
 
-  console.log(req.url)
+  
 
   try{
 

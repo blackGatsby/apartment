@@ -2,25 +2,28 @@
 import {showAlert} from './alerts.js'
 
 
+
        let user = {}
       document.getElementById('frm').addEventListener('submit', (e) => {
         e.preventDefault();
+        
         let data = new FormData(e.target);
         data.forEach((v,i)=>{
             user[i] = v;
         })
 
-        fetch('/logino',{
+   
+fetch("/logino",{
             method:'Post',
             headers:{
                 'Content-Type':'application/json'
             },
-            credentials: 'include',
+            //credentials: 'include',
             body:JSON.stringify(user)
         })
         .then((val)=>{
             if(val.ok){
-                
+            
                 showAlert('success','Logged in successfully');
                 window.setTimeout(()=>location.assign('/dash'),1000)
             }
@@ -28,8 +31,21 @@ import {showAlert} from './alerts.js'
                 showAlert('error', `incorrect loggins please try again`)
             }
         })
+
+
+
       
       })
+
+
+
+
+
+
+
+
+
+
 
 
 

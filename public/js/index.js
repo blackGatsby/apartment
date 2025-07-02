@@ -128,14 +128,11 @@ book.addEventListener('click',(e)=>{
 }
 
 
-const btn = document.getElementById('btn');
+const sch = document.getElementById('nav__search');
 
-if(btn){
+if(sch){
   
-btn.addEventListener('click',(e)=>{
-  e.preventDefault();
-  alert(`i promise under God's blue sky i will make it in this world in Jesus name amen`)
-})
+sch.hidden = true;
 
 }
 

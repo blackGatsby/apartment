@@ -90,3 +90,10 @@ if(board){
     })
   })
 }
+
+
+let sch = document.getElementById('nav__search');
+
+if(sch){
+  sch.hidden = true;
+}
